@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+
+    <h1>Campus Connect</h1>
+
+    <h2>Discover What's Happening on Campus!</h2>
+
+    <p>
+        Welcome to Campus Connect!
+        Find and share upcoming university events,
+        workshops, club meetings and social gatherings.
+    </p>
+
+    <a href="/create">
+        <button type="button">Create an Event</button>
+    </a>
+
+    <!--Upcoming Events table-->
+    <h3>Upcoming Events</h3>
+    <!--If statement to check through events, then list each events details-->
+    <% if (upcomingEvents && upcomingEvents.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Location</th>
+                    <th>Descriptions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% upcomingEvents.forEach(function(event) { %>
+                    <tr>
+                        <td><%= event.name %></td>
+                        <td><%= event.date %></td>
+                        <td><%= event.time %></td>
+                        <td><%= event.location %></td>
+                        <td><%= event.description %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <!--Provide indicator to user to create an event, if empty-->
+    <% } else { %>
+        <p>No upcoming events yet. Click "Create" to add one</p>
+    <% } %>
+
+</body>
+</html>
